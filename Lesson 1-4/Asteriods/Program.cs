@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Asteriods
 {
@@ -10,6 +7,13 @@ namespace Asteriods
     {
         static void Main(string[] args)
         {
+            Form frm = new Form();
+            frm.Width = 800;
+            frm.Height = 600;
+            Game.Init(frm);
+            frm.Show();
+            Game.Draw();
+            Application.Run(frm);
         }
     }
 }
