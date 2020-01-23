@@ -38,19 +38,21 @@ namespace Asteriods
         public static void Load()
         {
             Random rnd = new Random();
-            _objs = new BaseObject[30];
+            Image star = Image.FromFile(@"Star.png");
+            _objs = new BaseObject[60];
             for (int i = 0; i < _objs.Length; i++)
             {
-                int size = rnd.Next(5, 20);
-                int speed = rnd.Next(-5, 5);
-                _objs[i] = new Star(new Point(rnd.Next(100, Width), rnd.Next(100, Height)), new Point(speed , speed), new Size(size, size));
+                int size = rnd.Next(5, 30);
+                int speed = rnd.Next(3, 7);
+                _objs[i] = new Star(new Point(rnd.Next(1, Width), rnd.Next(1, Height)), new Point(speed, speed), new Size(size, size), star);
             }
         }
         public static void Draw()
         {
             Buffer.Graphics.Clear(Color.Black);
-            //Buffer.Graphics.DrawRectangle(Pens.White, new Rectangle(100, 100, 200, 200));
-            //Buffer.Graphics.FillEllipse(Brushes.Wheat, new Rectangle(100, 100, 200, 200));
+
+            Earth earth = new Earth(new Point(700, 100), new Point(700, 100), new Size(10, 10));
+            earth.Draw();
 
             foreach (var obj in _objs)
             {
