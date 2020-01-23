@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace Asteriods
 {
-    class BaseObject
+    abstract class BaseObject
     {
         protected Point Pos;
         protected Point Dir;
@@ -21,7 +21,7 @@ namespace Asteriods
             this.Dir = dir;
             this.Size = size;
         }
-        public virtual void Draw() => Game.Buffer.Graphics.DrawEllipse(Pens.White, Pos.X, Pos.Y, Size.Width, Size.Height);
+        public abstract void Draw();
         public virtual void Update()
         {
             Pos.X = Pos.X + Dir.X;
